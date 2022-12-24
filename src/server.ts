@@ -1,5 +1,8 @@
 import app from './app';
+import config from './config';
 
-const PORT: number = Number(process.env.PORT) || 3000;
+const SERVER_PORT = config.server.port || 3000;
 
-app.listen(PORT);
+app.listen(SERVER_PORT, () => {
+  console.info('Server listening on port: ' + SERVER_PORT);
+});
