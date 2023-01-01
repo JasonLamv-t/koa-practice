@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsnd --respawn src/server.ts",
+    "dev": "cross-env DEBUG=true tsnd --respawn src/server.ts",
     "build": "rm -rf dist && tsc",
     "serve": "npm run build && node dist/server.js"
   },
@@ -20,6 +20,7 @@
     "@types/node": "^18.11.17",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^16.0.3",
     "eslint": "^8.30.0",
     "eslint-config-standard-with-typescript": "^24.0.0",
@@ -30,9 +31,12 @@
     "koa": "^2.14.1",
     "koa-bodyparser": "^4.3.0",
     "koa-combine-routers": "^4.0.2",
+    "koa-jwt": "^4.0.3",
     "koa-pino-logger": "^4.0.0",
     "koa-router": "^12.0.0",
     "mongoose": "^6.8.1",
+    "mongoose-paginate-v2": "^1.7.1",
+    "pino": "^8.8.0",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.4"
