@@ -1,9 +1,9 @@
 import Koa, { Context, DefaultContext, DefaultState } from 'Koa';
 import bodyParser from 'koa-bodyparser';
 import pino from 'koa-pino-logger';
-import jwt from 'koa-jwt';
 import mongoose from 'mongoose';
 import config from './config';
+import koajwt from 'koa-jwt';
 import router from './routes';
 
 const app: Koa<DefaultState, DefaultContext> = new Koa();
@@ -33,7 +33,7 @@ db.on('disconnected', () => {
 app.use(pinoInstance);
 app.use(bodyParser());
 app.use(
-  jwt({ secret: config.jwtSecret, debug: config.debug }).unless({
+  koajwt({ secret: config.jwtSecret, debug: config.debug }).unless({
     path: [/^\/public/, /^\/auth/]
   })
 );
@@ -43,6 +43,7 @@ app.use(router());
 
 app.use(async (ctx: Context) => {
   ctx.body = 'hello koa';
+  console.log(ctx.state);
 });
 
 export default app;
