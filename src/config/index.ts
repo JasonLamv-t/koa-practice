@@ -3,7 +3,7 @@ dotenv.config();
 
 const { DB_HOST } = process.env;
 const { MONGO_PORT, MONGO_USER, MONGO_PASSWORD, MONGO_DB_NAME } = process.env;
-const { SECRET } = process.env;
+const { SECERT } = process.env;
 const { DEBUG } = process.env;
 
 const config = {
@@ -16,7 +16,7 @@ const config = {
       options: { authSource: 'admin' }
     }
   },
-  jwtSecret: SECRET as string,
+  jwtSecret: SECERT as string,
   debug: DEBUG === 'true'
 };
 
